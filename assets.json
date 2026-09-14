@@ -1,0 +1,92 @@
+{
+  "logo": {
+    "width": 240,
+    "height": 240,
+    "bytes": 14050,
+    "source": "155008-0.jpg"
+  },
+  "counter": {
+    "width": 1108,
+    "height": 1477,
+    "bytes": 328882,
+    "source": "155008-4.jpg"
+  },
+  "karaoke": {
+    "width": 1108,
+    "height": 1477,
+    "bytes": 343816,
+    "source": "155006-7.jpg"
+  },
+  "room": {
+    "width": 1108,
+    "height": 1477,
+    "bytes": 295362,
+    "source": "155008-3.jpg"
+  },
+  "tables": {
+    "width": 1108,
+    "height": 1477,
+    "bytes": 291898,
+    "source": "155008-2.jpg"
+  },
+  "bottles": {
+    "width": 1400,
+    "height": 1050,
+    "bytes": 333080,
+    "source": "155006-2.jpg"
+  },
+  "exterior": {
+    "width": 1108,
+    "height": 1477,
+    "bytes": 267846,
+    "source": "155006-0.jpg"
+  },
+  "sign": {
+    "width": 1108,
+    "height": 1477,
+    "bytes": 170684,
+    "source": "155006-1.jpg"
+  },
+  "board": {
+    "width": 1400,
+    "height": 1050,
+    "bytes": 434360,
+    "source": "155006-6.jpg"
+  },
+  "karaage": {
+    "width": 930,
+    "height": 825,
+    "bytes": 157002,
+    "source": "155008-8.jpg"
+  },
+  "sashimi": {
+    "width": 854,
+    "height": 600,
+    "bytes": 44170,
+    "source": "155008-9.jpg"
+  },
+  "beef": {
+    "width": 1400,
+    "height": 1073,
+    "bytes": 164664,
+    "source": "155010-2.jpg"
+  },
+  "edamame": {
+    "width": 790,
+    "height": 504,
+    "bytes": 69998,
+    "source": "155010-0.jpg"
+  },
+  "noodles": {
+    "width": 842,
+    "height": 595,
+    "bytes": 103734,
+    "source": "155010-5.jpg"
+  },
+  "salad": {
+    "width": 979,
+    "height": 1130,
+    "bytes": 164500,
+    "source": "155011-3.jpg"
+  }
+}
