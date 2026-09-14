@@ -33,6 +33,6 @@ for(const phrase of ['高田駅から徒歩10分','月曜日・木曜日','17:00
 assert.match(docs.get('index.html'),/2018年7月24日/);assert.match(docs.get('karaoke.html'),/料金などの詳しいご案内/);
 assert.match(docs.get('menu.html'),/晩酌セット/);assert.match(docs.get('menu.html'),/カマンベールチーズ追加/);
 assert.match(docs.get('index.html'),/https:\/\/www.instagram.com\/tamayama_junko\//);
-if(base)for(const file of assets){const r=await fetch(new URL(file,base));assert.ok(r.ok);assert.ok((await r.arrayBuffer()).byteLength>0);}
+if(base)for(const file of assets){const r=await fetch(new URL(file,base));assert.ok(r.ok,file+': HTTP error');const actual=Buffer.from(await r.arrayBuffer());const expected=await readFile(resolve(root,file));assert.ok(actual.equals(expected),file+': served asset mismatch');}
 let bytes=0;for(const file of await readdir(resolve(root,'assets')))bytes+=(await stat(resolve(root,'assets',file))).size;
 console.log(`PASS: ${pages.length} HTML files, ${assets.size} referenced assets, internal links, source identity and core facts. Asset total: ${(bytes/1024/1024).toFixed(2)} MiB.`);

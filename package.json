@@ -1,1 +1,1 @@
-{"name":"izakaya-karaoke-tamanoie","private":true,"version":"1.0.0","type":"module","scripts":{"build":"node scripts/build.mjs","dev":"python3 -m http.server 4200 --bind 127.0.0.1 --directory dist","verify":"node scripts/verify.mjs"}}
+{"name":"izakaya-karaoke-tamanoie","private":true,"version":"1.0.0","type":"module","scripts":{"build":"node scripts/build.mjs","dev":"python3 -m http.server 4200 --bind 127.0.0.1 --directory dist","verify":"node scripts/verify.mjs","verify:pages":"node scripts/verify-pages.mjs"}}
