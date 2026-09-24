@@ -1,0 +1,81 @@
+/* Store-name subset of M PLUS Rounded 1c, SIL Open Font License. */
+@font-face {
+  font-family: "Tamanoie Rounded";
+  src: url("brand-rounded-700.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.brand small,
+.brand strong,
+.dialog-top p,
+.access-info h2 {
+  font-family: "Tamanoie Rounded", "Hiragino Maru Gothic ProN", sans-serif;
+  font-weight: 700;
+}
+
+.brand small { letter-spacing: .08em; }
+.brand strong { letter-spacing: .055em; }
+.brand { gap: 14px; }
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.social-links .social-link {
+  min-height: 44px;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.social-links .social-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+.social-link svg { flex-shrink: 0; }
+
+.footer-main > .social-links {
+  display: grid;
+  gap: 0;
+}
+
+.facebook-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 23px;
+  height: 23px;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+  font: 700 22px/1 Arial, sans-serif;
+  padding-top: 4px;
+  overflow: hidden;
+}
+
+.social-buttons {
+  display: grid;
+  gap: 12px;
+  margin-top: 30px;
+  max-width: 350px;
+}
+
+.instagram-copy .social-buttons .button {
+  display: grid;
+  grid-template-columns: 23px minmax(0, 1fr) auto;
+  gap: 14px;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.social-button-secondary { background: transparent; color: var(--ink); }
+.social-button-secondary:hover { background: var(--warm); }
+.access-info .social-links { margin-top: 16px; }
+.access-info .social-links .social-link { margin-top: 0; }
+
+@media (max-width: 760px) {
+  .brand { gap: 10px; }
+  .social-buttons { max-width: none; }
+  .social-links { gap: 4px 20px; }
+}
