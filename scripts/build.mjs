@@ -1,5 +1,7 @@
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 const out=new URL('../dist/',import.meta.url);await mkdir(out,{recursive:true});
+const brandStyleVersion=createHash('sha256').update(await readFile(new URL('assets/brand-social.css',out))).digest('hex').slice(0,12);
 const assets=JSON.parse(await readFile(new URL('../assets.json',import.meta.url),'utf8'));
 const phone='090-5238-1332',tel='tel:09052381332',instagram='https://www.instagram.com/tamayama_junko/';
 const map='https://maps.app.goo.gl/GoVsk32LAZ3YRfVz6?g_st=il';
@@ -53,6 +55,6 @@ ${heading('ACCESS & RESERVATION','店舗案内・ご予約','高田駅から歩�
 pages['404.html']=document('ページが見つかりません','居酒屋カラオケ玉の家のトップページへお戻りください。',`<section class="error-section section"><p class="eyebrow">PAGE NOT FOUND</p><h1>ページが見つかりません。</h1><p>お探しのページは移動、または削除された可能性があります。</p><a class="button" href="index.html">トップへ戻る <span aria-hidden="true">→</span></a></section>`,'404.html');
 for(const [file,html] of Object.entries(pages)){
  const withSocial= file==='access.html' ? html.replace('<a class="social-link" href="'+instagram+'" '+ext+'>'+ig+' Instagram '+arrow+'</a>',socialLinks()) : html;
- await writeFile(new URL(file,out),withSocial.replace('<script src="assets/site.js"','<link rel="stylesheet" href="assets/pages.css"><link rel="preload" href="assets/brand-rounded-700.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="assets/brand-social.css"><script src="assets/site.js"'));
+ await writeFile(new URL(file,out),withSocial.replace('<script src="assets/site.js"',`<link rel="stylesheet" href="assets/pages.css"><link rel="preload" href="assets/brand-rounded-700.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="assets/brand-social.css?v=${brandStyleVersion}"><script src="assets/site.js"`));
 }
 console.log('Built',Object.keys(pages).join(', '));

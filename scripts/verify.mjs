@@ -1,8 +1,10 @@
 import {readFile,readdir,stat} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
 const root=fileURLToPath(new URL('../dist/',import.meta.url));
+const brandStyleVersion=createHash('sha256').update(await readFile(resolve(root,'assets/brand-social.css'))).digest('hex').slice(0,12);
 const pages=['index.html','menu.html','karaoke.html','access.html','404.html'];
 const docs=new Map(await Promise.all(pages.map(async name=>[name,await readFile(resolve(root,name),'utf8')])));
 const assets=new Set();
@@ -11,6 +13,7 @@ for(const [name,html] of docs){
  assert.match(html,/居酒屋カラオケ玉の家/);assert.match(html,/<html lang="ja">/);
  assert.match(html,/name="viewport"/);assert.match(html,/rel="icon"/);assert.match(html,/assets\/pages.css/);
  assert.ok(html.includes('assets/brand-social.css'),name+': store-name and social styles');
+ assert.ok(html.includes(`assets/brand-social.css?v=${brandStyleVersion}`),name+': current logo stylesheet version');
  assert.ok(html.includes('assets/brand-rounded-700.ttf'),name+': locally hosted rounded font');
  assert.ok(html.includes('https://maps.app.goo.gl/GoVsk32LAZ3YRfVz6?g_st=il'),name+': supplied Google Maps URL');
  assert.ok(html.includes('https://www.facebook.com/share/1FUNmEGgBb/?mibextid=wwXIfr'),name+': supplied Facebook URL');
@@ -20,7 +23,7 @@ for(const [name,html] of docs){
  for(const m of html.matchAll(/(?:href|src)="([^"]+)"/g)){
   const url=m[1];if(/^(https?:|tel:|data:)/.test(url))continue;
   assert.ok(!url.startsWith('/'),name+': project path must be portable');
-  const [path,hash]=url.split('#');const target=path||name;
+  const [pathname,hash]=url.split('#');const path=pathname.split('?')[0];const target=path||name;
   assert.ok((await stat(resolve(root,target))).size>0,name+': '+url);
   if(hash)assert.ok(docs.get(target)?.includes(`id="${hash}"`),name+': missing anchor '+url);
   if(path&&!path.endsWith('.html'))assets.add(path);
